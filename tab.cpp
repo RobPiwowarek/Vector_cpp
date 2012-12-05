@@ -1,13 +1,14 @@
 #include <iostream>
 using namespace std;
 
-class wektor
+class vector
 {
-	public:
+	private:
 	int * pointer;
-	int max;
+	int max = 10; // default == 10
+	int array[max];
 
-	int & operator[](unsigned int index)
+	int & operator[](int index)
 	{
 		if (index < 0 || index > max)
 		{
@@ -16,9 +17,23 @@ class wektor
 		}
 		return *(pointer+index);		
 	}
+	
+	int Allocate(int currentmax, int wantedindex, const vector & old);
+	vector(int n);
+	vector();
+}
+
+int vector::Allocate(int currentmax, int wantedindex, const vector & old)
+{
+	vector temp;
+	temp = new int [currentmax+wantedindex];
+	for (int i = 0; i < currentmax;i++)
+		temp.array[i] = old.array[i];
+	
+	return temp;
 }
 
 main()
 {
-	wektor test;
+	vector test;
 }
