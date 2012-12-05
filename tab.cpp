@@ -13,9 +13,8 @@ class wektor
 		{
 			cout << "Error. Not in index's range(0 - " << max << ")" << endl;
 			exit(0);			
-
-			return *(pointer+index);
-		}		
+		}
+		return *(pointer+index);		
 	}
 }
 
