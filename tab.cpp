@@ -32,6 +32,7 @@ class Vector
 	}
 	
 	public:
+	int GetMaxIndex();
 	Vector(int max)
 	{
 	}
@@ -42,6 +43,11 @@ class Vector
 	{
 	}
 };
+
+int GetMaxIndex::Vector()
+{
+	return max_index;	
+}
 
 int main()
 {
