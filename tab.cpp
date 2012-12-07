@@ -5,7 +5,7 @@ class Vector
 {
 	private:
 	int * root;
-	int maxindex = 0; 
+	int max_index = 0; 
  
 	int & operator[](int index)
 	{
@@ -14,7 +14,7 @@ class Vector
 			cout << "Error"	<< endl;
 			exit(1);
 		}
-		if (index > maxindex)
+		if (index > max_index)
 		{
 			int * temp = new int [index];
 			for (int i = 0; i < index; i++)
@@ -23,9 +23,9 @@ class Vector
 			}
 			delete root[];
 			root = temp;
-			maxindex = index;
+			max_index = index;
 		}
-		return *(root+maxindex);		
+		return *(root+max_index);		
 	}
 	
 	Vector(int max); // const.
