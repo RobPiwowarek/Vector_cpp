@@ -28,8 +28,9 @@ class Vector
 		return *(root+maxindex);		
 	}
 	
-	Vector(int n);
-	Vector();
+	Vector(int max); // const.
+	Vector(); // default const.
+	~Vector(); // destr.
 }
 
 main()
