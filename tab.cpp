@@ -24,7 +24,7 @@ class Vector
 			{
 				*(temp+i) = *(root+i);
 			}
-			//delete root[];
+			delete []root;
 			root = temp;
 			max_index = index;
 		}
