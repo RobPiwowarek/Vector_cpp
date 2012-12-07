@@ -1,39 +1,38 @@
 #include <iostream>
 using namespace std;
 
-class vector
+class Vector
 {
 	private:
-	int * pointer;
-	int max = 10; // default == 10
-	int array[max];
-
+	int * root;
+	int maxindex = 0; 
+ 
 	int & operator[](int index)
 	{
-		if (index < 0 || index > max)
+		if (index < 0)
 		{
-			cout << "Error. Not in index's range(0 - " << max << ")" << endl;
-			exit(0);			
+			cout << "Error"	<< endl;
+			exit(1);
 		}
-		return *(pointer+index);		
+		if (index > maxindex)
+		{
+			int * temp = new int [index];
+			for (int i = 0; i < index; i++)
+			{
+				*(temp+i) = *(root+i);
+			}
+			delete root[];
+			root = temp;
+			maxindex = index;
+		}
+		return *(root+maxindex);		
 	}
 	
-	int Allocate(int currentmax, int wantedindex, const vector & old);
-	vector(int n);
-	vector();
-}
-
-int vector::Allocate(int currentmax, int wantedindex, const vector & old)
-{
-	vector temp;
-	temp = new int [currentmax+wantedindex];
-	for (int i = 0; i < currentmax;i++)
-		temp.array[i] = old.array[i];
-	
-	return temp;
+	Vector(int n);
+	Vector();
 }
 
 main()
 {
-	vector test;
+	Vector test;
 }
