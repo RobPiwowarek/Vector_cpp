@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stdlib.h>
+
 using namespace std;
 
 class Vector
@@ -6,7 +8,8 @@ class Vector
 	private:
 	int * root;
 	int max_index = 0; 
- 
+ 	
+ 	public:
 	int & operator[](int index)
 	{
 		if (index < 0)
@@ -21,19 +24,26 @@ class Vector
 			{
 				*(temp+i) = *(root+i);
 			}
-			delete root[];
+			//delete root[];
 			root = temp;
 			max_index = index;
 		}
 		return *(root+max_index);		
 	}
 	
-	Vector(int max); // const.
-	Vector(); // default const.
-	~Vector(); // destr.
-}
+	public:
+	Vector(int max)
+	{
+	}
+	Vector()
+	{
+	}
+	~Vector()
+	{
+	}
+};
 
-main()
+int main()
 {
 	Vector test;
 }
