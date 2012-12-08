@@ -1,4 +1,0 @@
-Wektor
-======
-
-custom array
