@@ -1,0 +1,44 @@
+g++ -w -p main.cpp vector.cpp
+In file included from main.cpp:3:0:
+vector.h:58:1: error: ‘Iterator’ does not name a type
+vector.h:67:1: error: ‘Iterator’ does not name a type
+vector.h:75:1: error: ‘Iterator’ does not name a type
+vector.h:81:1: error: ‘Iterator’ does not name a type
+vector.h:87:1: error: ‘Iterator’ does not name a type
+vector.h:91:1: error: ‘T’ does not name a type
+vector.h:96:1: error: ‘T’ does not name a type
+vector.h:101:1: error: ‘T’ does not name a type
+vector.h:106:1: error: ‘T’ does not name a type
+vector.h:111:1: error: ‘T’ does not name a type
+vector.h:116:1: error: ‘T’ does not name a type
+vector.h:121:8: error: ‘T’ was not declared in this scope
+vector.h:121:9: error: template argument 1 is invalid
+vector.h:121:13: error: ‘Iterator’ has not been declared
+vector.h: In function ‘int* GetVect()’:
+vector.h:123:9: error: invalid use of ‘this’ in non-member function
+vector.h: At global scope:
+vector.h:126:6: error: ‘Iterator’ has not been declared
+vector.h:126:27: error: declaration of ‘operator==’ as non-function
+vector.h:126:27: error: ‘Iterator’ was not declared in this scope
+In file included from vector.cpp:1:0:
+vector.h:58:1: error: ‘Iterator’ does not name a type
+vector.h:67:1: error: ‘Iterator’ does not name a type
+vector.h:75:1: error: ‘Iterator’ does not name a type
+vector.h:81:1: error: ‘Iterator’ does not name a type
+vector.h:87:1: error: ‘Iterator’ does not name a type
+vector.h:91:1: error: ‘T’ does not name a type
+vector.h:96:1: error: ‘T’ does not name a type
+vector.h:101:1: error: ‘T’ does not name a type
+vector.h:106:1: error: ‘T’ does not name a type
+vector.h:111:1: error: ‘T’ does not name a type
+vector.h:116:1: error: ‘T’ does not name a type
+vector.h:121:8: error: ‘T’ was not declared in this scope
+vector.h:121:9: error: template argument 1 is invalid
+vector.h:121:13: error: ‘Iterator’ has not been declared
+vector.h: In function ‘int* GetVect()’:
+vector.h:123:9: error: invalid use of ‘this’ in non-member function
+vector.h: At global scope:
+vector.h:126:6: error: ‘Iterator’ has not been declared
+vector.h:126:27: error: declaration of ‘operator==’ as non-function
+vector.h:126:27: error: ‘Iterator’ was not declared in this scope
+make: *** [all] Error 1
