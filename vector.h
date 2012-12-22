@@ -60,7 +60,7 @@ Iterator Vector<T>::Begin()
 	Iterator New;
 	New->current = this->root;
 	New->vector = this;
-	return Iterator;
+	return New;
 }
 
 template<class T>
@@ -69,7 +69,7 @@ Iterator Vector<T>::End()
 	Iterator New;
 	New->current = this->(root+max_index);
 	New->vector = this;
-	return Iterator;
+	return New;
 }
 
 Iterator::Iterator()
@@ -80,14 +80,12 @@ Iterator::Iterator()
 
 Iterator::Iterator(Vector<T> vect)
 {
-	this->vector = vect;
+	this->vector = &vect;
 	this->current = vector->*(root);
 }
 
 Iterator::~Iterator()
 {
-	delete this->vector;
-	delete this->current;
 }
 
 T & Iterator::operator--(int)
