@@ -13,14 +13,14 @@ class Vector
  	public:
 	T & operator[](int index);
 	ostream & operator<<(ostream & screen);
-	Vector operator+(Vector b);
-	Vector operator=(Vector b);
-	Vector operator!=(Vector b);
-	Vector operator==(Vector b);
-	Vector operator<(Vector b);
-	Vector operator>(Vector b);
-	Vector operator<=(Vector b);
-	Vector operator>=(Vector b);
+	Vector<T> operator+(Vector<T> b);
+	void operator=(Vector<T> b);
+	bool operator!=(Vector<T> b);
+	bool operator==(Vector<T> b);
+	bool operator<(Vector<T> b);
+	bool operator>(Vector<T> b);
+	bool operator<=(Vector<T> b);
+	bool operator>=(Vector<T> b);
 
 	public:
 	int getMaxIndex();
@@ -29,12 +29,14 @@ class Vector
 	~Vector();
 };
 
-template <class T> int Vector<T>::getMaxIndex()
+template <class T>
+int Vector<T>::getMaxIndex()
 {
 	return max_index;	
 }
 
-template <class T> T & Vector<T>::operator[](int index)
+template <class T>
+T & Vector<T>::operator[](int index)
 	{
 		
 		if (max_index == 0 && index >= 0)
@@ -64,7 +66,8 @@ template <class T> T & Vector<T>::operator[](int index)
 		return root[index];		
 	}
 
-template <class T>Vector Vector<int>::operator+(Vector b)
+template <class T>
+Vector<T> Vector<T>::operator+(Vector b)
 {
 	Vector<int>sum;
 	if (this->max_index < b.max_index)
@@ -92,7 +95,8 @@ template <class T>Vector Vector<int>::operator+(Vector b)
 	return sum;
 }
 
-template <class T>void Vector<int>::operator=(Vector b)
+template <class T>
+void Vector<T>::operator=(Vector<T> b)
 {
 	if (this->max_index < b.max_index)
 	{
@@ -114,7 +118,8 @@ template <class T>void Vector<int>::operator=(Vector b)
 		this->root[i] = b.root[i];
 }
 
-template <class T>int Vector<int>::operator<(Vector b)
+template <class T>
+bool Vector<T>::operator<(Vector<T> b)
 {
 	if (this->max_index < b.max_index)
 		return 1;
@@ -122,7 +127,8 @@ template <class T>int Vector<int>::operator<(Vector b)
 		return 0;
 }
 
-template <class T>int Vector<int>::operator>(Vector b)
+template <class T>
+bool Vector<T>::operator>(Vector<T> b)
 {
 	if (this->max_index > b.max_index)
 		return 1;
@@ -130,7 +136,8 @@ template <class T>int Vector<int>::operator>(Vector b)
 		return 0;
 }
 
-template <class T>int Vector<int>::operator==(Vector b)
+template <class T>
+bool Vector<T>::operator==(Vector<T> b)
 {
 	if (this->max_index == b.max_index)
 		return 1;
@@ -138,7 +145,8 @@ template <class T>int Vector<int>::operator==(Vector b)
 		return 0;
 }
 
-template <class T>int Vector<int>::operator!=(Vector b)
+template <class T>
+bool Vector<T>::operator!=(Vector<T> b)
 {
 	if (this->max_index != b.max_index)
 		return 1;
@@ -146,7 +154,8 @@ template <class T>int Vector<int>::operator!=(Vector b)
 		return 0;
 }
 
-template <class T>int Vector<int>::operator<=(Vector b)
+template <class T>
+bool Vector<T>::operator<=(Vector<T> b)
 {
 	if (this->max_index <= b.max_index)
 		return 1;
@@ -154,7 +163,8 @@ template <class T>int Vector<int>::operator<=(Vector b)
 		return 0;
 }
 
-template <class T>int Vector<int>::operator>=(Vector b)
+template <class T>
+bool Vector<T>::operator>=(Vector<T> b)
 {
 	if (this->max_index >= b.max_index)
 		return 1;
@@ -162,7 +172,8 @@ template <class T>int Vector<int>::operator>=(Vector b)
 		return 0;
 }
 
-template <class T>ostream & Vector<int>::operator<<(ostream & screen)
+template <class T>
+ostream & Vector<T>::operator<<(ostream & screen)
 {
 	for (int i = 0; i < this->max_index; i++)
 	{	
@@ -172,18 +183,21 @@ template <class T>ostream & Vector<int>::operator<<(ostream & screen)
 	return screen;
 }
 
-template <class T> Vector<T>::Vector(int max)
+template <class T>
+Vector<T>::Vector(int max)
 {
 	this->max_index = max;
 	root = new T[max];
 }
 	
-template <class T> Vector<T>::Vector()
+template <class T>
+Vector<T>::Vector()
 {
 	this->max_index = 0;
 }
 	
-template <class T> Vector<T>::~Vector()
+template <class T>
+Vector<T>::~Vector()
 {
 	delete []root;
 }
