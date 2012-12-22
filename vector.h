@@ -6,6 +6,29 @@ using namespace std;
 template <class T>
 class Vector
 {
+	public:
+	class Iterator
+	{
+		private:
+		Vector<T> * vector;
+		
+		public:
+		T * current;
+
+		Vector<T> * GetVect(void);
+		bool operator==(Iterator b);
+		T & operator*(void);
+		T & operator++(void); // pre-inkr.
+		T & operator++(int); // post-inkr.
+		T & operator--(void);
+		T & operator--(int);
+		T & operator+(int b);
+		T & operator-(int b);
+		Iterator();
+		Iterator(Vector<T> vect);
+		~Iterator();
+	};
+
 	private:
 	T * root;
 	int max_index; 
@@ -21,6 +44,8 @@ class Vector
 	bool operator>(Vector<T> b);
 	bool operator<=(Vector<T> b);
 	bool operator>=(Vector<T> b);
+	Iterator Begin();
+	Iterator End();
 
 	public:
 	int getMaxIndex();
@@ -28,6 +53,85 @@ class Vector
 	Vector();
 	~Vector();
 };
+
+template<class T>
+Iterator Vector<T>::Begin()
+{
+	Iterator New;
+	New->current = this->root;
+	New->vector = this;
+	return Iterator;
+}
+
+template<class T>
+Iterator Vector<T>::End()
+{
+	Iterator New;
+	New->current = this->(root+max_index);
+	New->vector = this;
+	return Iterator;
+}
+
+Iterator::Iterator()
+{
+	this->vector = NULL;
+	this->current = NULL;
+}
+
+Iterator::Iterator(Vector<T> vect)
+{
+	this->vector = vect;
+	this->current = vector->*(root);
+}
+
+Iterator::~Iterator()
+{
+	delete this->vector;
+	delete this->current;
+}
+
+T & Iterator::operator--(int)
+{
+	return this->*(current--);
+}
+
+T & Iterator::operator++(int)
+{
+	return this->*(current++);
+}
+
+T & Iterator::operator-(int b)
+{
+	return this->*(current-b);
+}
+
+T & Iterator::operator+(int b)
+{
+	return this->*(current+b);
+}
+
+T & Iterator::operator--(void)
+{
+	return this->*(--current);
+}
+
+T & Iterator::operator++(void)
+{
+	return this->*(++current);
+}
+
+Vector<T> * Iterator::GetVect()
+{
+	return this->vector;
+}
+
+bool Iterator::operator==(Iterator b)
+{
+	if (this->current == b.current && this->GetVect() == b.GetVect();)
+		return true;
+	else
+		return false;
+}
 
 template <class T>
 int Vector<T>::getMaxIndex()
