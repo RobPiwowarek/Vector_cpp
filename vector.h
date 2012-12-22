@@ -122,54 +122,54 @@ template <class T>
 bool Vector<T>::operator<(Vector<T> b)
 {
 	if (this->max_index < b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
 bool Vector<T>::operator>(Vector<T> b)
 {
 	if (this->max_index > b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
 bool Vector<T>::operator==(Vector<T> b)
 {
 	if (this->max_index == b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
 bool Vector<T>::operator!=(Vector<T> b)
 {
 	if (this->max_index != b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
 bool Vector<T>::operator<=(Vector<T> b)
 {
 	if (this->max_index <= b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
 bool Vector<T>::operator>=(Vector<T> b)
 {
 	if (this->max_index >= b.max_index)
-		return 1;
+		return true;
 	else
-		return 0;
+		return false;
 }
 
 template <class T>
