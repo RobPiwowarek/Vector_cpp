@@ -16,7 +16,7 @@ main()
 
 	for(int i=0; i< n+1;i++)
 	{
-		test[i] = rand() % 255;
+		test[i] = 65 + rand() % 25;
 	}	
 
 	for (int i = 0; i < n+1; i++)
