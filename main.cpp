@@ -6,9 +6,8 @@ using namespace std;
 
 main()
 {
-
 	srand(time(NULL));
-	int n = 9;
+	int n = 17;
 	Vector<char> test;
 	test[n];
 	
@@ -21,5 +20,13 @@ main()
 
 	for (int i = 0; i < n+1; i++)
 		cout << test[i] << endl;
-	printf("####\n");
+
+	cout << "Iterator:: " << endl;
+	Vector<char>::Iterator i1;
+
+	for (i1 = test.begin() ; i1 != test.end() ; i1++)
+	{
+		cout << *i1 << endl;
+
+	}
 }

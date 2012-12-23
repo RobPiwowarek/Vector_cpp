@@ -1,22 +1,21 @@
 #include <iostream>
 #include <stdlib.h>
-//#include "vector.h"
 using namespace std;
 
-template <class T>
+template <typename T>
 class Vector
 {
 	public:
 	class Iterator
 	{
-		private:
-		Vector<T> * vector;
-		
 		public:
+		Vector<T> * vector;
 		T * current;
 
-		Vector<T> * GetVect(void);
+		Vector<T> * getVect(void);
+		void setVect(Vector<T> vect);
 		bool operator==(Iterator b);
+		bool operator!=(Iterator b);
 		T & operator*(void);
 		T & operator++(void); // pre-inkr.
 		T & operator++(int); // post-inkr.
@@ -44,8 +43,8 @@ class Vector
 	bool operator>(Vector<T> b);
 	bool operator<=(Vector<T> b);
 	bool operator>=(Vector<T> b);
-	Iterator Begin();
-	Iterator End();
+	Iterator begin();
+	Iterator end();
 
 	public:
 	int getMaxIndex();
@@ -55,82 +54,120 @@ class Vector
 };
 
 template<class T>
-Iterator Vector<T>::Begin()
+typename Vector<T>::Iterator Vector<T>::begin()
 {
 	Iterator New;
-	New->current = this->root;
-	New->vector = this;
+	New.current = this->root;
+	New.vector = this;
 	return New;
 }
 
 template<class T>
-Iterator Vector<T>::End()
+typename Vector<T>::Iterator Vector<T>::end()
 {
 	Iterator New;
-	New->current = this->(root+max_index);
-	New->vector = this;
+	New.current = (this->root)+max_index+1;
+	New.vector = this;
 	return New;
 }
 
-Iterator::Iterator()
+template<class T>
+Vector<T>::Iterator::Iterator()
 {
 	this->vector = NULL;
 	this->current = NULL;
 }
 
-Iterator::Iterator(Vector<T> vect)
+template<class T>
+Vector<T>::Iterator::Iterator(Vector<T> vect)
 {
 	this->vector = &vect;
 	this->current = vector->*(root);
 }
 
-Iterator::~Iterator()
+template<class T>
+Vector<T>::Iterator::~Iterator()
 {
 }
 
-T & Iterator::operator--(int)
+template<class T>
+T & Vector<T>::Iterator::operator*()
+{
+	return *(this->current);
+}
+
+template<class T>
+T & Vector<T>::Iterator::operator--(int)
 {
 	return this->*(current--);
 }
 
-T & Iterator::operator++(int)
+template<class T>
+T & Vector<T>::Iterator::operator++(int)
 {
-	return this->*(current++);
+	T * temp;
+	temp = this->current;
+
+	(this->current)++;
+	return *temp;
 }
 
-T & Iterator::operator-(int b)
+template<class T>
+T & Vector<T>::Iterator::operator-(int b)
 {
 	return this->*(current-b);
 }
 
-T & Iterator::operator+(int b)
+template<class T>
+T & Vector<T>::Iterator::operator+(int b)
 {
 	return this->*(current+b);
 }
 
-T & Iterator::operator--(void)
+template<class T>
+T & Vector<T>::Iterator::operator--(void)
 {
 	return this->*(--current);
 }
 
-T & Iterator::operator++(void)
+template<class T>
+T & Vector<T>::Iterator::operator++(void)
 {
 	return this->*(++current);
 }
 
-Vector<T> * Iterator::GetVect()
+template<class T>
+void Vector<T>::Iterator::setVect(Vector<T> vect)
+{
+	this->vector = &vect;
+}
+
+template<class T>
+Vector<T> * Vector<T>::Iterator::getVect()
 {
 	return this->vector;
 }
 
-bool Iterator::operator==(Iterator b)
+template<class T>
+bool Vector<T>::Iterator::operator==(Iterator b)
 {
-	if (this->current == b.current && this->GetVect() == b.GetVect();)
+	if (this->current == b.current && this->getVect() == b.getVect())
 		return true;
 	else
 		return false;
 }
 
+template<class T>
+bool Vector<T>::Iterator::operator!=(Iterator b)
+{
+	if (this->current == b.current && this->getVect() == b.getVect())
+		return false;
+	else
+		return true;
+
+
+
+}
 template <class T>
 int Vector<T>::getMaxIndex()
 {
